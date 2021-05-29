@@ -1,0 +1,1 @@
+java -cp ./out/production/no-maven/ com.mkaszynski.javatools.nomaven.Calculator "$@"
