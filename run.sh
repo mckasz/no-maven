@@ -1,1 +1,1 @@
-java -cp ./out/production/no-maven/ com.mkaszynski.javatools.nomaven.Calculator "$@"
+java -cp ./out/production/no-maven/:./lib/* com.mkaszynski.javatools.nomaven.Planetary "$@"
