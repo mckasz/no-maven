@@ -1,0 +1,42 @@
+package com.mkaszynski.javatools.nomaven;
+
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
+class PlanetaryTest {
+
+    private static final String CONTENT =
+            "{" +
+                    "\"copyright\":\"Ignacio Diaz Bobillo\"," +
+                    "\"date\":\"2021-06-03\"," +
+                    "\"explanation\":\"Globular star cluster Omega Centauri, also known as NGC 5139, is some 15,000 light-years away. " +
+                    "The cluster is packed with about 10 million stars much older than the " +
+                    "Sun within a volume about 150 light-years in diameter. It's the largest " +
+                    "and brightest of 200 or so known globular clusters that roam the halo of " +
+                    "our Milky Way galaxy. Though most star clusters consist of stars with the " +
+                    "same age and composition, the enigmatic Omega Cen exhibits the presence of " +
+                    "different stellar populations with a spread of ages and chemical abundances. " +
+                    "In fact, Omega Cen may be the remnant core of a small galaxy merging " +
+                    "with the Milky Way. Omega Centauri's red giant stars (with a yellowish hue) " +
+                    "are easy to pick out in this sharp, color telescopic view.\"," +
+                    "\"hdurl\":\"https://apod.nasa.gov/apod/image/2106/OmegaCent_LRGB_final1_small.jpg\"," +
+                    "\"media_type\":\"image\"," +
+                    "\"service_version\":\"v1\"," +
+                    "\"title\":\"Millions of Stars in Omega Centauri\"," +
+                    "\"url\":\"https://apod.nasa.gov/apod/image/2106/OmegaCent_LRGB_final1_1024.jpg\"" +
+                    "}\n";
+
+    @Test
+    void returnedPictureIsCorrectlyDeserialized() throws Exception {
+        WebClient mockWebClient = null; // TODO add mockito library to be able to create mocks
+        Planetary planetary = new Planetary(mockWebClient);
+
+        APOD picture = planetary.getPicture();
+
+        assertThat(picture.title).isEqualTo("Millions of Stars in Omega Centauri");
+    }
+}
