@@ -2,10 +2,10 @@ package com.mkaszynski.javatools.nomaven;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class PlanetaryTest {
 
@@ -32,7 +32,8 @@ class PlanetaryTest {
 
     @Test
     void returnedPictureIsCorrectlyDeserialized() throws Exception {
-        WebClient mockWebClient = null; // TODO add mockito library to be able to create mocks
+        WebClient mockWebClient = mock(WebClient.class);
+        when(mockWebClient.get(anyString())).thenReturn(CONTENT);
         Planetary planetary = new Planetary(mockWebClient);
 
         APOD picture = planetary.getPicture();
